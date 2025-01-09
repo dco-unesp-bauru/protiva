@@ -1,0 +1,7 @@
+Esse problema consiste em receber uma matriz que é um quadrado mágico (onde todas as colunas, linhas e diagonais possuem a mesma soma) e descobrir o valor ilegível na mesma. A forma mais simples de resolver isso é localizando o número 0.
+
+Após localizar o número 0, calculei a soma de uma linha qualquer em que esse elemento não estivesse, para saber o valor da soma do quadrado mágico.
+
+Em seguida, calculei a soma de uma linha que possuísse o valor ilegível, para determinar a diferença entre a soma verdadeira e a soma errada.
+
+Por fim, somei 1 nas posições x e y do número ilegível, pois o problema trabalha com indexação 1.

@@ -1,0 +1,3 @@
+Esse problema consiste em contar quantos intervalos de dias na lista de medições têm soma igual ao valor S inserido pelo usuário.
+
+Para realizar essa tarefa, utilizei dois for loops aninhados, onde o loop externo (i) percorre todas as posições iniciais possíveis e o loop interno (j) calcula a soma dos valores de medição no subintervalo. Quando a soma igual a S é encontrada, uma variável chamada "contador" é incrementada, para que o valor final seja exibido ao término da execução.

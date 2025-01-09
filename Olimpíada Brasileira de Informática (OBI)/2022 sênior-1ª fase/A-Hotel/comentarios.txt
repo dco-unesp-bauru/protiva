@@ -1,0 +1,5 @@
+Esse problema consiste em calcular o valor total a ser pago por uma estadia no hotel, dependendo do dia de chegada da pessoa. A diária começa com um valor base D e vai aumentando a cada dia até o dia 15, quando o aumento para de ocorrer. Para calcular o valor da diária no dia de chegada, eu fiz um cálculo que leva em consideração o aumento progressivo até o dia 15, limitando o aumento caso o dia de chegada seja posterior a esse.
+
+Eu utilizei uma variável chamada diarias_adicionais para determinar quantos dias de aumento devem ser considerados, e limitei esse valor a 15 para garantir que o aumento pare após o dia 15. O valor da diária foi calculado com a fórmula d + (diarias_adicionais - 1) * a, que leva em consideração a quantidade de aumentos até o dia de chegada.
+
+Após calcular o valor da diária no dia de chegada, eu multipliquei esse valor pela quantidade de dias restantes para a estadia, que é dada por (31 - n + 1), e assim obtive o valor total a ser pago.
