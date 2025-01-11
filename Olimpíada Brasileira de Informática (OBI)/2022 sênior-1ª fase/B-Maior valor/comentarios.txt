@@ -1,0 +1,7 @@
+Esse problema consiste em encontrar o maior número no intervalo cuja soma de todos os seus dígitos seja igual ao valor S inserido no programa.
+
+Para isso, eu criei uma função que recebe um valor inteiro e vai decompondo-o por sucessivas operações de divisão e módulo, somando seus dígitos.
+
+Depois, optei por utilizar um loop que itera do maior valor para o menor, visto que, ao fazer isso, é possível encontrar apenas um valor, o que reduz a necessidade de iterações desnecessárias.
+
+Caso o valor não seja encontrado, o programa retorna -1, o que foi feito na última linha da função main.
