@@ -1,0 +1,2 @@
+Solucao:
+	Contar a quantidade de "a" que tem outro "a" adjacente a ele.

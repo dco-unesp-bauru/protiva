@@ -1,0 +1,4 @@
+Ideia: Aplicar um dfs/bfs para contar as áreas cortadas
+
+Para isso precisamos manter uma forma de monitorar os cortes.
+Uma forma de arrumar a matriz para aplicarmos o dfs/bfs é duplicar as linhas e colunas para que os índices pares representem o corte(uma barreira) e as ímpares a área de fato.

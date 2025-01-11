@@ -1,0 +1,16 @@
+Existem duas operações que podem ser feitas no eixo X e no eixo Y
+OBS: As operações são iguais para o eixo X e Y.
+
+Seja (x, y) as cordenadas da particula
+1. x -> x/2 
+2. x -> x/2 + 2^(n-1)
+
+Sempre que aplicamos alguma dessas operações a quantidade de 0's a direita diminui em 1, na representação binária
+Exemplo:
+	Analisando os bits da particula para N = 8 e x = 01000000 -> 6 0's
+	1. x >> 1 => 00100000 -> 5 0's
+	2. x >> 1 + 2^7 => 01100000 -> 5 0's
+isso acontece, pois sempre dividimos x por 2 e quando 2^(n-1) é o primeiro 1 da posição inicial da particula
+
+dessa forma podemos saber quantas operações foram feitas pelo número de 0's a direita
+						n - 1 - x
