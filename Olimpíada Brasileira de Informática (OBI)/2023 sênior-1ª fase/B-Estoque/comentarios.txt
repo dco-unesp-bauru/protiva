@@ -1,0 +1,1 @@
+O processo aqui também é simples. Basta criar uma matriz e subtrair o valor de uma determinada posição sempre que uma venda for feita, fique atento aos índices.

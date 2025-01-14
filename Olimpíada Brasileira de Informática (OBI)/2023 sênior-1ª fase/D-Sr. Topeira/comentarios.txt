@@ -1,0 +1,3 @@
+Essa última é um pouco mais complexa, já que envolve o uso de grafos. Existem várias abordagens aqui, eu particularmente optei por percorrer uma matriz com todas as possibilidades de conexões dadas pelo usuário, comparando com a entrada do usuário, já que me pareceu mais simples.
+
+Não esqueça que, se x tiver uma conexão com y, y também terá uma conexão com x.
