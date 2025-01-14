@@ -1,0 +1,1 @@
+A resolução pode ser feita por meio da implementação de uma estrutura de pilha. Quando a entrada for um número diferente de 0, o número entra na pilha, quando for zero, a pilha retira seu item do topo. Ao final, soma-se os elementos da pilha que sobraram.

@@ -1,0 +1,1 @@
+Para fazer esse exercício, o processo consiste em somar o número de vitórias do jogador e validar a soma com base no intervalo de quantidade de vitórias que ele se enquadrava, para então imprimir seu grupo, ou desqualificação.

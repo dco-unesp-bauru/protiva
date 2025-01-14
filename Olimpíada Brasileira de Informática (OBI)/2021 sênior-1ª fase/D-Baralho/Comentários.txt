@@ -1,0 +1,12 @@
+Primeiro, tem-se uma classe Carta responsável por representar uma carta. Uma carta pode ser composta de um número da dezena, e da unidade, um valor, e por fim, um naipe.
+Sabemos que estaremos trabalhando com 4 naipes, logo, cria-se 4 estruturas set<int>, pois os valores das cartas não devem se repetir. 
+Inicia-se a entrada, sabemos que cada entrada será uma cadeia de caracteres, e que a informação que desejamos está separada em grupos de 3 em meio a string do input, então, ao se obter a entrada, iteramos a string em sub strings de trios de caracteres:
+- Dezena
+- Unidade
+- Naipe
+Armazena-se as informações em um objeto de Carta, sendo seu valor = carta.d * 10 + carta.u
+
+Após isso, temos que conferir a qual set<int> a carta será inserida, com base em seu naipe. Se a carta já existir, maraca-se o set correspondente ao seu naipe com 0, essa será nossa marca de erro, que usaremos mais tarde, senão, a carta será inserida no set normalmente.
+Por fim, aplica-se uma função de Validar em todos os 4 sets:
+Caso o set tenha o valor 0, a saída será "erro";
+Senão, a saída será o total de cartas que deveria ter no baralho (13), subtraído do total de cartas adicionado no set.
