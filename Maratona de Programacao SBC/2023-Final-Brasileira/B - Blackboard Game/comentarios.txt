@@ -1,0 +1,16 @@
+O problema apresenta um jogo onde tem 3*N elementos escritos no quadro, carlinhos vai selecionar 1 elemento não escolhido para circular, Equalizer vai selecionar 2 elementos não escolhidos, apagando um deles e fazendo um quadrado no outro. Pedrinho vence se a soma de circulados é diferente da soma do com quadrado, caso contrário Equalizer vence. Pedrinho quer saber se dado que ele e Equalizer vão jogar de maneira ótima, se é possível Pedrinho vencer. Reescrevendo a pergunta, dado que Equalizer vai jogar de maneira ótima, é possível vencer?
+
+Como foi resolvido:
+
+O truque é pensar ao contrário. Quando Equalizer consegue vencer não importando onde Pedrinho jogue, ou seja, quando Equalizer vence mesmo que Pedrinho jogue de maneira ótima.
+
+	Equalizer só vence se:
+		não tem nenhum número cuja repetição não seja divisível por 3
+			se existe um número que não se repete:
+				Pedrinho escolhe esse número e vence
+			se existe um número que se repete duas vezes exatamente:
+				Equalizer nunca pode apagar esse número
+					Pedrinho iria precisar escolher esse número para Equalizer escolher o que sobrar, porém como só aparece duas vezes sempre vai ter uma terceira opção para Pedrinho
+			para todos os números se repetindo no mínimo 3 vezes:
+				Se pedrinho escolhe um número, Equalizer escolhe e apaga o mesmo número.
+					Se tiver uma repetição não divisível por 3, uma hora vai sobrar uma repetição de 1 ou de 2.
