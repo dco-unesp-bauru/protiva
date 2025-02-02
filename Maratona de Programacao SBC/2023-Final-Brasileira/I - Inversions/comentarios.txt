@@ -1,0 +1,35 @@
+O problema é contar quantas inversões tem numa string que se repete N vezes. Inversão é quando para i < j, a letra S[i] > S[j]. A resposta é em módulo de 10^9+7.
+
+Primeiramente, é recomendado já preparar as funçãos para calcular com módulo:
+	Add(x,y) return (x+y)%M;					soma você soma os dois números e depois faz o módulo
+	Sub(x,y) return (x-y+M)%M;					para dar resto positivo você soma M na subtração e depois faz módulo
+	Mul(x,y) return (x*y)%M;					produto você multiplica e depois faz módulo
+	Exp(x,k)
+		if (k==0) return 1;					expoente 0
+		int x_k2 = Exp(x,k/2);					x^k=x^(k/2)*x^(k/2)
+		if(k%2 == 1) return Mul(x_k2,Mul(x_k2,x));		se k for impar multiplica por x de novo
+		return Mul (x_k2,x_k2);
+	Inv(x) return exp(x,M-2);					dividir a por b é o mesmo que multiplicar a pelo inverso de b. Para calcular inverso de b em módulo M tem se a fórmula: b^(M-1) = b^0 %M ou b^(M-2)=b^(-1) %M
+	
+É melhor fazer isso para evitar erros por esquecer do módulo depois, além de que a divisão em módulo não é simplesmente fazer módulo no resultado da divisão.
+
+Para resolver o problema vamos considerar todas as letras do alfabeto e o tamanho da string.
+	INV[i][j] = número de letras menores que a letra i+97 até a posição j.
+	INV[i][j] = INV[i][j-1] + (i+97>S[j])?1:0;
+	O(26*|S|)
+Agora vamos ler a palavra e calcular o sufixo(sem considerar posição do i, apenas pega as inversões que ocorreram naquele tipo de letra) da palavra original e o prefixo(considerar a posição i) da palavra original.
+O número total de inversões em que n é o número de repetições:
+	para n=1	res[1]= prefixo				prefixo é o número de inversões da palavra considerando i
+			res[n]= res[n-1]+prefixo+(n-1)*sufixo	colocando a repetição nova atrás da string antiga, a resposta total vai ser a soma de:
+									inversões da string antiga sem considerar a palavra adicionada  (res[n-1])
+									inversões da palavra adicionada ignorando o resto da string  (prefixo)
+									inversões da string antiga considerando palavra original, a cada i da palavra e j da string antiga, i<j, e string antiga é palavra original n-1 vezes ((n-1)*sufixo)
+	então para n a resposta seria:
+		res[n]=res[n-1]+prefixo+(n-1)*sufixo
+		res[n]=res[n-2]+prefixo+(n-2)*sufixo+prefixo+(n-1)*sufixo=res[n-2]+2*prefixo+(n-2)*sufixo+(n-1)*sufixo
+		res[n]= n*prefixo + (n-1)*sufixo+(n-2)*sufixo+...+2*sufixo+sufixo
+		res[n]= n*prefixo + sufixo* (n-1 + n-2 + ... 2 + 1)
+		Note que coeficiente de sufixo é uma PG, logo podemos fazer
+		res[n]= n*prefixo + sufixo * (n*(n-1)/2)
+
+PS: não esqueça de fazer N%=M :D
