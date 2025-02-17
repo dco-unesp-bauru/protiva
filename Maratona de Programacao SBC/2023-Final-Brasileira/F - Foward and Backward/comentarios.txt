@@ -1,0 +1,142 @@
+O problema é dado um número N, informar as bases 2 a N em que N é palíndromo (de trás para frente é igual). Ex: 33 na base 10 = 100001 na base 2 = 11 na base 32
+
+Dados:
+	N: número inteiro natural >=2
+	D: conjunto formado pelos divisores de N, onde di é o i-ésimo elemento do conjunto
+								para todo i, di < d(i+1)
+	bi: dígito i de N na base correspondente
+	T: número de dígitos de N na base correspondente
+	palindromo: Para todo i = 0 a T/2, bi=b(T-i-1)
+	N na base M: a0*M^0 + a1*M^1 + a2*M^2 + ... + am*M^m / para todo i, bi=ai e ai<M e ai>=0 e M^i<=N
+
+Hipótese inicial:
+	Para qualquer N na base 10, ele pode ser escrito nas bases 2 a N-1 formando ou não um palíndromo.
+	
+
+	N/di=dj		I
+	N na base di-1 = b0*1 + b1*(di-1)+... = N 	bi<di-1 e bi>=0
+
+	Consideraremos caso para 2 dígitos
+		N na base x = b0*1 + b1*x = N	para ser palindromo, b0 = b1
+		b0 + b0*x = N
+		b0*(x+1) = N
+		N/(x+1)=b0 	N/di=dj
+		b0=dj 	dj<x  x=di-1 dj<di-1 dj+1<di
+
+		Para verificarmos se x é base:
+			x>(raiz de N) ou dj<(raiz de N)-1
+			N%(x+1) = 0   ou N%(dj) = 0 	x=N/dj -1
+			
+
+	Consideraremos caso para 3 dígitos
+		N na base x = b0*1 + b1*x + b2*x^2 = N	para ser palindromo, b0 = b2, b1 < x
+		N = b0 + b1*x + b0*x^2
+		N - b1*x = b0 + b0*x^2
+		M = N - b1*x
+		y = x^2
+		M = b0 + b0*y
+		M = b0 * (y+1)		b0 e y+1 são divisores de M
+
+		M % (y+1) = 0
+		(N - b1*x) % (y+1) = 0
+		N%(y+1) = x*b1
+		N%(x^2 + 1) = r
+
+		Para verificarmos se x é base:
+			N/(x^2+1) < x
+			N%(x^2+1) = r
+			r%x = 0 
+
+	Consideraremos caso para 4 dígitos
+		N na base x = b0*1 + b1*x + b2*x^2 + b3*x^3 = N	para ser palindromo, b0 = b3, b1 = b0
+		N = b0 + b1*x + b1*x^2 + b0*x^3
+		I = b1*x + b1* x^2
+		N - I = b0 + b0*x^3
+		M = N - I
+		y = x^3
+		M = b0 + b0*y
+		M = b0 * (y+1)		b0 e y+1 são divisores de M
+
+		M % (y+1) = 0
+		(N - I) % (y+1) = 0
+		N%(y+1) = I
+		N%(x^3 + 1) = r
+
+		r = b1*x + b1*x^2
+		r = x*(b1+b1*x)
+		r/x = b1 + b1*x		p/x tem que ser inteiro para formar um palídromo na base x
+		r/x = b1*(1+x)		b1 e x+1 são divisores de p/x
+
+		Para verificarmos se x é base:
+			N/(x^3+1) < x
+			N%(x^3+1)=r
+			r%x=0
+			(r/x) % (x+1) = 0
+
+	Consideraremos caso para 5 dígitos
+		N na base x = b0*1 + b1*x + b2*x^2 + b3*x^3 + b4*x^4 = N	para ser palindromo, b0 = b4, b1 = b3, b2<N
+		N = b0 + b1*x + b2*x^2 + b1*x^3 + b0*x^4
+		I1 = b1*x + b2* x^2 + b1*x^3
+		N - I1 = b0 + b0*x^4
+		M1 = N - I1
+		y = x^4
+		M1 = b0 + b0*y
+		M1 = b0 * (y+1)		b0 e y+1 são divisores de M
+
+		M1 % (y+1) = 0
+		(N - I1) % (y+1) = 0
+		N%(y+1) = I1
+		N%(x^4 + 1) = r1
+
+		r1 = b1*x + b2*x^2 + b1*x^3
+		I2 = b2*x^2
+		r1-I2 = b1*x + b1*x^3
+		M2 = r1-I2
+		M2 = x*(b1+b1*x^2)
+		M2/x = b1 + b1*x^2		M2/x tem que ser inteiro para formar um palídromo na base x
+		M2/x = b1*(1+x^2)		b1 e x+1 são divisores de M2/x
+		
+		M2/x % (1+x^2) = 0
+		(r1-I2)/x % (1+x^2) = 0
+		(r1/x - I2/x) % (1+x^2) = 0
+		r1/x % (x^2 +1) = I2/x
+		r1/x % (x^2 +1) = (b2*x^2)/x
+		r1/x % (x^2 +1) = b2*x
+		r1/x % (x^2+1) = r2
+		
+		Para verificarmos se x é base:
+			N/(x^4+1) < x
+			N%(x^4+1)=r1
+			r1%x=0
+			(r1/x) % (x^2+1) = r2
+			r2%x=0
+
+	Para base x com y > 2 digitos
+		enquanto (N/x^(y-1) >= x:
+			y++
+		
+		r0 = N
+		M0 = N
+		fim0 = y-1
+		de i = 0 até (y)/2 -1
+			se i diferente de 0:
+				ri%(x)==0
+				Mi = ri/(x)
+			r(i+1) = Mi%(x^(fim i -  i) +1)
+			Mi/(x^(fim i -  i) +1) < x
+			fim (i+1) = fim i -1
+
+		se y é impar
+			r(i-1)%x == 0 e r(i-1)/x <x
+		se não
+			M(i-1)%(x+1) == 0
+
+
+Percorre de i= 1 a (raiz de N)-1, verifica quando é divisor e se for divisor adiciona a base (N/i - 1) na lista de bases 2 dígitos
+Checa se i não é maior ou igual a N/i -1
+
+Percorre de i=raiz de N a 2, verifica se i é base e se for adiciona na lista de bases menores
+
+
+
+raiz de 4 é 2 ====>> N=5
