@@ -1,0 +1,1 @@
+Para resolver esse problema basta dividir a distância pelo consumo por litro do carro para obter a quantidade necessária de gasolina para o percurso e subtrair o total de combustível já no tanque. É necessário também fazer uma checagem para que esse valor não fique negativo.

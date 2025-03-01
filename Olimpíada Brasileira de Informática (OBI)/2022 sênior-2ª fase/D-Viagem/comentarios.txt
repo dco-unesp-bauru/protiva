@@ -1,0 +1,1 @@
+Para resolver o problema, basta representar as ilhas como um grafo ponderado. Depois, utilize um algoritmo de caminho mínimo com restrição de custo, como Dijkstra modificado, para encontrar o menor tempo possível respeitando o orçamento disponível. Se não for possível chegar ao destino dentro do orçamento, retorne -1.

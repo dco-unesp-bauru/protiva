@@ -1,0 +1,1 @@
+Para resolver o problema, basta criar uma função que verifica se uma string é um palíndromo. Depois, percorra a string original gerando substrings e verifique se cada uma é um palíndromo. Sempre que encontrar uma substring com tamanho maior que o máximo encontrado até então, atualize o tamanho máximo.
